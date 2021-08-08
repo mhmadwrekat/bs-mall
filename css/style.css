@@ -1,0 +1,111 @@
+*
+{
+font-family: 'roboto','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif ;
+}
+header
+{
+    background: linear-gradient(to right top , rgb(255, 30, 0),  rgb(216, 144, 12),rgb(255, 255, 255),white ,rgb(238, 207, 207),grey,rgb(73, 73, 73));
+            padding-top: 30px ;
+        padding-bottom: 45px ;
+}
+header a:hover{
+        background-color : orange ;
+        transition : all 400ms ;
+    }
+header section:nth-child(1)
+{
+    float : right ;
+    padding-right : 20px ;
+}
+header a{
+    padding : 10px 20px ;
+    font-size:  22px ;
+    text-decoration : none ;
+    font-weight : bolder ;
+    color : black ;
+}
+body p:nth-child(2)
+{
+    color : grey ;
+    font-size: 12px ;
+}
+body
+{
+    margin : auto ;
+    width : 960px ;
+background: linear-gradient(to right top  ,rgb(73, 73, 73),grey,rgb(238, 207, 207),rgb(238, 207, 207),white, white,rgb(111, 185, 62),rgb(102, 255, 0));
+}
+main{
+    padding-left : 10px ;
+    padding-right : 10px ;
+}
+footer
+{
+    padding : 20px  ;
+        text-align: center;
+    font-weight: bolder ;
+    background: linear-gradient(to right top , rgb(255, 30, 0),  rgb(216, 144, 12),white,white ,rgb(238, 207, 207),grey,rgb(73, 73, 73));
+}
+footer section img{
+  padding-left : 20px ;
+    padding-right : 20px ;
+}
+footer section:nth-child(2){
+    padding-top : 20px ;
+    }
+/***********************************************/
+/***********************************************/
+/***********************************************/
+/***********************************************/
+/***********************************************/
+/***********************************************/
+/***********************************************/
+.pic {
+    display : grid ;
+    grid-template-columns: auto auto auto ;
+    gap : 20px ;
+    padding : 90px 0px ;
+}
+.pic img {
+    width : 300px ;
+    height : 250px ;
+}
+.bSec{
+    padding-top : 50px ;
+    padding-bottom : 90px ;
+}
+button:hover{
+    background-color : green ;
+    transition : all 400ms ;
+}
+.button {
+    background-color: rgb(214, 147, 23);
+    float : right ;
+    width : 250px ;
+    height : 80px ;
+    font-size: large ;
+    font-weight : bolder ;
+    align-items: center;
+}
+section ul:nth-child(1){
+    font-size: 15px ;
+    color : rgb(9, 83, 77) ;
+    font-weight : bolder ;
+    display : grid ;
+    grid-template-columns: auto auto;
+}
+section ul li{
+    padding-top : 20px ;
+
+
+}
+
+
+
+
+
+
+
+
+
+
