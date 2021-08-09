@@ -13,3 +13,12 @@
 * After 25 Clicks : Display The Percentage Of Times That An Item Was Clicked When It Was Shown .
 
 ---
+## Branch -*-chartJS-*-
+ * add Chars
+ * fix about image duplication in same iteration and next iterashion .
+ * after the user finish 25 round of clicks the chart will showned .
+ * if the user clicks on view result button the chart will not showned .
+ * Edit Css Color .
+
+### The chart ( CDN ) from : **[chart.JS](https://www.chartjs.org/)**
+---
