@@ -4,7 +4,7 @@ font-family: 'roboto','Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lu
 }
 header
 {
-    background: linear-gradient(to right top , rgb(255, 30, 0),  rgb(216, 144, 12),rgb(255, 255, 255),white ,rgb(238, 207, 207),grey,rgb(73, 73, 73));
+    background: linear-gradient(to right top , rgb(255, 30, 0),  rgb(81, 110, 148),rgb(255, 255, 255),white ,rgb(238, 207, 207),grey,rgb(73, 73, 73));
             padding-top: 30px ;
         padding-bottom: 45px ;
 }
@@ -22,7 +22,7 @@ header a{
     font-size:  22px ;
     text-decoration : none ;
     font-weight : bolder ;
-    color : black ;
+    color : rgb(0, 0, 0) ;
 }
 body p:nth-child(2)
 {
@@ -33,10 +33,10 @@ body
 {
     margin : auto ;
     width : 960px ;
-background: linear-gradient(to right top  ,rgb(73, 73, 73),grey,rgb(238, 207, 207),rgb(238, 207, 207),white, white,rgb(111, 185, 62),rgb(102, 255, 0));
+    /*width : 1500px ;*/
+background: linear-gradient(to right top  ,blue,rgb(73, 73, 73),grey,rgb(238, 207, 207),white,rgb(126, 152, 158),rgb(238, 207, 207),white, white,rgb(153, 179, 180),white,rgb(94, 90, 160),rgb(34, 36, 153));
 }
 main{
-    height : 1160px ;
     padding-left : 10px ;
     padding-right : 10px ;
 }
@@ -76,7 +76,7 @@ footer section:nth-child(2){
     padding-bottom : 90px ;
 }
 button:hover{
-    background-color : green ;
+    background-color : red ;
     transition : all 400ms ;
 }
 .button {
@@ -90,17 +90,17 @@ button:hover{
 }
 section ul:nth-child(1){
     font-size: 15px ;
-    color : rgb(9, 83, 77) ;
+    color : rgb(0, 0, 0) ;
     font-weight : bolder ;
     display : grid ;
     grid-template-columns: auto auto;
 }
 section ul li{
     padding-top : 20px ;
-
-
 }
-
+canvas {
+    background-color : white ;
+}
 
 
 

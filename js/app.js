@@ -5,7 +5,6 @@ let srcimg = [
   'pet-sweep.jpg','pen.jpg','dragon.jpg','dog-duck.jpg','cthulhu.jpg','chair.jpg',
   'bubblegum.jpg','breakfast.jpg','boots.jpg','bathroom.jpg','banana.jpg','bag.jpg'
 ] ;
-
 const section = document.getElementById('pic') ;
 const list = document.getElementById('button') ;
 
@@ -103,6 +102,7 @@ function secFunc (happend)
 
   if (count >= counterClick)
   {
+    chartJs() ;
     document.getElementById('pic').removeEventListener('click' , secFunc) ;
   }
 }
@@ -113,3 +113,63 @@ function randNum (min,max)
   max = Math.floor(max);
   return Math.floor((Math.random() * (max - min + 1) + min)*1) ;
 }
+//chartJs() ;
+
+function chartJs ()
+{
+  let nameImg = [] ;
+  let votesImg = [] ;
+  let shownImg = [] ;
+
+  for ( let i = 0 ; i < stand.arr.length ; i++)
+  {
+    nameImg[i] = srcimg[i].split('.')[0] ;
+    shownImg.push(stand.arr[i].see) ;
+    votesImg.push(stand.arr[i].votes) ;
+  }
+
+  let ctx = document.getElementById('myChart').getContext('2d');
+  let myChart = new Chart(ctx, {
+    type: 'bar',
+    data: {
+      labels: nameImg ,
+
+
+
+      datasets: [{
+        label: '# Shown',
+        data: shownImg ,
+        backgroundColor: [
+          'rgb(180, 22, 219)',
+        ],
+        borderColor: [
+          'rgb(180, 22, 219)',
+
+        ],
+        borderWidth: 1
+      }
+      ,
+      {
+        label: '# Votes',
+        data: votesImg ,
+
+        backgroundColor: [
+          'rgb(187, 202, 46)',
+        ],
+        borderColor: [
+          'rgb(174, 190, 25)',
+        ],
+        borderWidth: 1
+      }
+      ]
+    },
+    options: {
+      scales: {
+        y: {
+          beginAtZero: true
+        }
+      }
+    }
+  });
+}
+
