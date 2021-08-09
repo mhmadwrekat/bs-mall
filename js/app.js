@@ -15,12 +15,15 @@ let picThree = document.getElementById('picThree') ;
 let counterClick = 25 ;
 let count = 0 ;
 
+let one = 0 ;
+let two = 0 ;
+let three = 0 ;
 function stand (name , picSrc)
 {
   this.name = name ;
   this.pic = picSrc ;
   this.see = 0 ;
-  this.votes = [] ;
+  this.votes = 0 ;
 
   stand.arr.push(this) ;
 }
@@ -34,20 +37,23 @@ for ( let i = 0 ; i < srcimg.length ; i++)
 
 function print ()
 {
-  let one = randNum( 0 , srcimg.length -1 ) ;
-  let two = randNum( 0 , srcimg.length -1 ) ;
-  let three = randNum( 0 , srcimg.length -1 ) ;
+  one = randNum( 0 , srcimg.length -1 ) ;
+
+  do {
+    two = randNum( 0 , srcimg.length -1 ) ;
+  } while (one === two) ;
+
+  do {
+    three = randNum( 0 , srcimg.length -1 ) ;
+  } while (two === three || one === three) ;
 
   picOne.src = ('./img/' + stand.arr[one].pic) ;
   picTwo.src = ('./img/' + stand.arr[two].pic) ;
   picThree.src = ('./img/' + stand.arr[three].pic) ;
 
   stand.arr[one].see++ ;
-  stand.arr[one].votes++ ;
   stand.arr[two].see++ ;
-  stand.arr[two].votes++ ;
   stand.arr[three].see++ ;
-  stand.arr[three].votes++ ;
 }
 
 print () ;
@@ -56,56 +62,48 @@ section.addEventListener('click' , secFunc) ;
 
 list.addEventListener('click',evenList) ;
 
-function evenList (happ)
+function evenList ()
 {
-  let one = randNum( 0 , srcimg.length -1 ) ;
-  let two = randNum( 0 , srcimg.length -1 ) ;
-  let three = randNum( 0 , srcimg.length -1 ) ;
-
-  picOne.src = ('./img/' + stand.arr[one].pic) ;
-  picTwo.src = ('./img/' + stand.arr[two].pic) ;
-  picThree.src = ('./img/' + stand.arr[three].pic) ;
-
   const list = document.getElementById('list') ;
 
   let ul = document.createElement('ul');
   list.appendChild(ul) ;
-  for ( let i = 0 ; i < srcimg.length ; i++ )
+  for ( let i = 0 ; i < stand.arr.length ; i++ )
   {let li = document.createElement('li');
-    li.textContent = stand.arr[i] = stand.arr[i].name + ' had ' + stand.arr[i].votes + ' Votes and was seen ' + stand.arr[i].see + ' times .' ;
+    li.textContent = stand.arr[i].name + ' had ' + stand.arr[i].votes + ' Votes and was seen ' + stand.arr[i].see + ' times .' ;
     ul.appendChild(li) ;
   }
 }
 
 function secFunc (happend)
 {
-  if (happend.target.id === 'picOne' || happend.target.id === 'picTwo' || happend.target.id === 'picThree'|| happend.target.id === 'pic')
+  if (happend.target.id === 'picOne' || happend.target.id === 'picTwo' || happend.target.id === 'picThree')
   {
     if ( count < counterClick )
     {
       if (happend.target.id === 'picOne')
       {print () ;
         count++ ;
+        stand.arr[one].votes++ ;/* */
       }
       if (happend.target.id === 'picTwo')
       {print () ;
         count++ ;
+        stand.arr[two].votes++;/* */
       }if (happend.target.id === 'picThree')
       {print () ;
         count++ ;
-      }
-      if (happend.target.id === 'pic')
-      {print () ;
-        count++ ;
+        stand.arr[three].votes++;/* */
       }
     }
-  } else {
-    document.removeEventListener('click' , secFunc) ;
+  }
+  else if ((happend.target.id === 'pic') && (count < counterClick))
+  {print () ;
+    count++ ;}
 
-    let list = document.getElementById('list') ;
-    let button = document.createElement('button') ;
-    list.appendChild(button) ;
-    button.textContent = 'view results' ;
+  if (count >= counterClick)
+  {
+    document.getElementById('pic').removeEventListener('click' , secFunc) ;
   }
 }
 

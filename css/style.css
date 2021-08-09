@@ -36,6 +36,7 @@ body
 background: linear-gradient(to right top  ,rgb(73, 73, 73),grey,rgb(238, 207, 207),rgb(238, 207, 207),white, white,rgb(111, 185, 62),rgb(102, 255, 0));
 }
 main{
+    height : 1160px ;
     padding-left : 10px ;
     padding-right : 10px ;
 }
