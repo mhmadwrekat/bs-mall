@@ -13,6 +13,7 @@ let picTwo = document.getElementById('picTwo') ;
 let picThree = document.getElementById('picThree') ;
 let counterClick = 25 ;
 let count = 0 ;
+let prevImg =[] ;
 
 let one = 0 ;
 let two = 0 ;
@@ -36,15 +37,16 @@ for ( let i = 0 ; i < srcimg.length ; i++)
 
 function print ()
 {
-  one = randNum( 0 , srcimg.length -1 ) ;
 
   do {
+    one = randNum( 0 , srcimg.length -1 ) ;
     two = randNum( 0 , srcimg.length -1 ) ;
-  } while (one === two) ;
-
-  do {
     three = randNum( 0 , srcimg.length -1 ) ;
-  } while (two === three || one === three) ;
+
+  } while (one === two || one === three || two === three
+    || prevImg.includes(one) || prevImg.includes(two) || prevImg.includes(three)) ;
+
+  prevImg = [one,two,three] ;
 
   picOne.src = ('./img/' + stand.arr[one].pic) ;
   picTwo.src = ('./img/' + stand.arr[two].pic) ;
@@ -63,15 +65,17 @@ list.addEventListener('click',evenList) ;
 
 function evenList ()
 {
-  const list = document.getElementById('list') ;
+  if (count >= counterClick)
+  {
+    const list = document.getElementById('list') ;
 
-  let ul = document.createElement('ul');
-  list.appendChild(ul) ;
-  for ( let i = 0 ; i < stand.arr.length ; i++ )
-  {let li = document.createElement('li');
-    li.textContent = stand.arr[i].name + ' had ' + stand.arr[i].votes + ' Votes and was seen ' + stand.arr[i].see + ' times .' ;
-    ul.appendChild(li) ;
-  }
+    let ul = document.createElement('ul');
+    list.appendChild(ul) ;
+    for ( let i = 0 ; i < stand.arr.length ; i++ )
+    {let li = document.createElement('li');
+      li.textContent = stand.arr[i].name + ' had ' + stand.arr[i].votes + ' Votes and was seen ' + stand.arr[i].see + ' times .' ;
+      ul.appendChild(li) ;
+    }}
 }
 
 function secFunc (happend)
