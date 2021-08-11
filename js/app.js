@@ -1,3 +1,4 @@
+
 'use strict' ;
 
 let srcimg = [
@@ -18,26 +19,23 @@ let prevImg =[] ;
 let one = 0 ;
 let two = 0 ;
 let three = 0 ;
-function stand (name , picSrc)
+
+function stand (name , picSrc , show = 0 , vote = 0)
 {
   this.name = name ;
   this.pic = picSrc ;
-  this.see = 0 ;
-  this.votes = 0 ;
+  this.see = show ;
+  this.votes = vote ;
 
   stand.arr.push(this) ;
 }
 
 stand.arr = [] ;
 
-for ( let i = 0 ; i < srcimg.length ; i++)
-{
-  new stand ( srcimg[i].split('.')[0] , srcimg[i] ) ;
-}
+data();
 
 function print ()
 {
-
   do {
     one = randNum( 0 , srcimg.length -1 ) ;
     two = randNum( 0 , srcimg.length -1 ) ;
@@ -55,6 +53,8 @@ function print ()
   stand.arr[one].see++ ;
   stand.arr[two].see++ ;
   stand.arr[three].see++ ;
+
+  localStorage.info = JSON.stringify(stand.arr);
 }
 
 print () ;
@@ -77,6 +77,10 @@ function evenList ()
       ul.appendChild(li) ;
     }}
 }
+stand.prototype.data = function ()
+{
+  console.log('test');
+};
 
 function secFunc (happend)
 {
@@ -117,7 +121,6 @@ function randNum (min,max)
   max = Math.floor(max);
   return Math.floor((Math.random() * (max - min + 1) + min)*1) ;
 }
-//chartJs() ;
 
 function chartJs ()
 {
@@ -127,7 +130,7 @@ function chartJs ()
 
   for ( let i = 0 ; i < stand.arr.length ; i++)
   {
-    nameImg[i] = srcimg[i].split('.')[0] ;
+    nameImg[i] = stand.arr[i].name ;
     shownImg.push(stand.arr[i].see) ;
     votesImg.push(stand.arr[i].votes) ;
   }
@@ -137,9 +140,6 @@ function chartJs ()
     type: 'bar',
     data: {
       labels: nameImg ,
-
-
-
       datasets: [{
         label: '# Shown',
         data: shownImg ,
@@ -148,7 +148,6 @@ function chartJs ()
         ],
         borderColor: [
           'rgb(180, 22, 219)',
-
         ],
         borderWidth: 1
       }
@@ -156,7 +155,6 @@ function chartJs ()
       {
         label: '# Votes',
         data: votesImg ,
-
         backgroundColor: [
           'rgb(187, 202, 46)',
         ],
@@ -175,5 +173,21 @@ function chartJs ()
       }
     }
   });
+}
+
+function data()
+{
+  if (localStorage.info)
+  {
+    let info = JSON.parse(localStorage.info) ;
+    for(let i = 0 ; i < info.length ; i++)
+    {
+      new stand ( srcimg[i].split('.')[0] , srcimg[i] , info[i].see, info[i].votes ) ;
+    }
+  } else {
+    for ( let i = 0 ; i < srcimg.length ; i++){
+      new stand ( srcimg[i].split('.')[0] , srcimg[i] ) ;
+    }
+  }
 }
 
